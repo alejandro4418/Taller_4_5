@@ -130,3 +130,87 @@ app.get("/aviso-envio", (req, res) => {
 app.get("/chaqueta-temu", (req, res) => {
   res.json(productos[0]);
 });
+
+
+
+
+// ------------------------------------------------------------
+// REQUEST (petición): lo que el cliente le envía al servidor
+// ------------------------------------------------------------
+
+
+//Existen 3 maneras de enviar datos: body, params y query.
+
+//BODY 
+
+// Aplicación práctica: el cliente agrega un producto al carrito. Elige
+// producto, color, talla (solo para ropa) y cantidad. Los datos viajan
+// en el cuerpo del POST, no en la URL en sí, y el servidor los valida antes
+// de calcular el total.
+// Prueba (JSON): { "productoId": 1, "color": "Negro", "talla": "L", "cantidad": 2 }
+
+app.post("/carrito", (req, res) => {
+  console.log(req.body);
+  const { productoId, color, talla, cantidad } = req.body ?? {};
+  const producto = productos.find((p) => p.id === Number(productoId));
+
+  if (!producto) {
+    return res.status(404).json({ error: "Producto no encontrado" });
+  }
+  if (!producto.colores.includes(color)) {
+    return res.status(400).json({
+      error: `Color no disponible. Opciones: ${producto.colores.join(", ")}`,
+    });
+  }
+  if (producto.tallas && !producto.tallas.includes(talla)) {
+    return res.status(400).json({
+      error: `Talla inválida. Opciones: ${producto.tallas.join(", ")}`,
+    });
+  }
+  const unidades = Number(cantidad);
+  if (!Number.isInteger(unidades) || unidades < 1) {
+    return res.status(400).json({ error: "La cantidad debe ser un entero mayor a 0" });
+  }
+
+  res.json({
+    mensaje: "Producto agregado al carrito",
+    producto: producto.producto,
+    color,
+    talla: talla ?? "no aplica",
+    cantidad: unidades,
+    total: Number((producto.precio * unidades).toFixed(2)),
+    moneda: producto.moneda,
+  });
+});
+
+//PARAMS 
+
+// (parámetros de ruta: /ruta/:valor)
+
+// Aplicación práctica: el parámetro identifica UN recurso concreto.
+// Al hacer clic en la tarjeta de un producto, la tienda abre su
+// detalle con /producto/2. El id forma parte de la dirección.
+app.get("/producto/:id", (req, res) => {
+  console.log(req.params);
+  const producto = productos.find((p) => p.id === Number(req.params.id));
+  if (!producto) {
+    return res.status(404).json({ error: "Producto no encontrado" });
+  }
+  res.json(producto);
+});
+
+//QUERY 
+
+// (parámetros de consulta: ?clave=valor)
+
+// Aplicación práctica: sirven para filtrar o buscar. El cliente marca
+// el filtro "tecnologia" y la URL queda /buscar?tipo=tecnologia.
+// Si no envía filtro, se devuelve todo el catálogo.
+app.get("/buscar", (req, res) => {
+  console.log(req.query);
+  const { tipo } = req.query;
+  const resultados = tipo
+    ? productos.filter((p) => p.tipo === String(tipo).toLowerCase())
+    : productos;
+  res.json({ total: resultados.length, resultados });
+});
