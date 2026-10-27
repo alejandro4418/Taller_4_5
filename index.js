@@ -8,82 +8,82 @@ const app = express();
 
 // ------------------------------------------------------------
 // DATOS: catálogo de 4 productos reales de la tienda en línea Temu
-// "tipo" es una etiqueta corta que usamos para filtrar con query. 
+// "tipo" es una etiqueta corta que usamos para filtrar con query.
 // El "precio" es el estimado con promociones que mostraba la página.
 // ------------------------------------------------------------
 const productos = [
-  {
-    id: 1,
-    producto: "Chaqueta con capucha con cremallera para hombre (otoño-invierno)",
-    tipo: "ropa",
-    categoria: "Hoodies y sudaderas para hombre",
-    precio: 20.12,
-    precioAnterior: 34.3,
-    descuento: "41%",
-    moneda: "USD",
-    colores: ["Caqui", "Color marino", "Gris claro", "Negro", "Gris oscuro"],
-    tallas: ["M", "L", "XL", "XXL", "XXXL"],
-    calificacion: 4.7,
-    resenas: 1715,
-    ventas: "88,9K+",
-    entrega: "10 días hábiles",
-    envioGratis: true,
-    url: "https://www.temu.com/ec/chaqueta-con-capucha-de-moda-para-hombre--invierno-estilo--y-americano-sudadera-casual-con-cremallera-para-exteriores--y-calido-ideal-para--g-601099663561476.html?refer_page_name=goods&refer_page_id=10032_1793059784847_xsixmishee&refer_page_sn=10032&_x_sessn_id=gwpkjdhybz",
-  },
-  {
-    id: 2,
-    producto: "Smartwatch para hombres y mujeres (llamadas inalámbricas, SMS, modos deportivos)",
-    tipo: "tecnologia",
-    categoria: "Smartwatch y accesorios",
-    precio: 6.3,
-    precioAnterior: 22.84,
-    descuento: "72%",
-    moneda: "USD",
-    colores: ["Negro", "Dorado", "Plateado", "Rosa"],
-    calificacion: 4.7,
-    resenas: 2915,
-    ventas: "79,8K+",
-    vendedor: "ERUN",
-    entrega: "11 días hábiles",
-    envioGratis: true,
-    url: "https://www.temu.com/ec/-smartwatch---para-hombres-como-para-mujeres-regalo-de-san-valentin--inalambricas-sms-multiples--deportivos-control-remoto-de-camara-rastreador-de-actividad-fisica-compatible-con-iphone-y--carga-usb-correa-de-silicona--inteligente-g-606135394363392.html",
-  },
-  {
-    id: 3,
-    producto: "Conjunto cuaderno de cuero vintage estilo pirata + 2 bolígrafos de gel",
-    tipo: "oficina",
-    categoria: "Oficina y escuela",
-    precio: 4.01,
-    precioAnterior: 12.82,
-    descuento: "68%",
-    moneda: "USD",
-    colores: ["Marrón", "Negro", "Azul", "Verde", "Rojo marrón", "Rojo"],
-    incluye: ["Cuaderno pirata vintage", "2 bolígrafos de gel negros y dorados"],
-    calificacion: 4.8,
-    resenas: 4564,
-    ventas: "82,8K+",
-    entrega: "10 días hábiles",
-    envioGratis: true,
-    url: "https://www.temu.com/ec/-conjunto--tres-articulos-un-cuaderno-de-cuero--acabado-mate-y--boligrafos-de-gel-negros-y-dorados-con-un--de---de-tema-pirata-retro--de---esta-equipado-con-un-cierre-metalico-y-encuadernacion--lo-que-lo-convierte-en-un--de-escritura-divertido-y--g-601101315823890.html",
-  },
-  {
-    id: 4,
-    producto: "Mochila unisex de gran capacidad, estilo minimalista",
-    tipo: "bolsos",
-    categoria: "Mochilas para estudiantes",
-    precio: 14.23,
-    precioAnterior: 48.84,
-    descuento: "70%",
-    moneda: "USD",
-    colores: ["Gris"],
-    coloresAgotados: ["Negro"],
-    calificacion: 4.8,
-    resenas: 131,
-    ventas: "4,4K+",
-    entrega: "10 días hábiles",
-    envioGratis: true,
-    url: "https://www.temu.com/ec/mochila-unisex-de-gran-capacidad-de-estilo-minimalista-a---de-material--calidad--y-resistente-a-los-aranazos--un-estilo--y--de-bolso-de--casual-con-multiples-bolsillos-y-compartimentos-adecuada-para-desplazamientos-diarios-y-viajes-para-g-601100046820079.html",
-  },
+    {
+        id: 1,
+        producto: "Chaqueta con capucha con cremallera para hombre (otoño-invierno)",
+        tipo: "ropa",
+        categoria: "Hoodies y sudaderas para hombre",
+        precio: 20.12,
+        precioAnterior: 34.3,
+        descuento: "41%",
+        moneda: "USD",
+        colores: ["Caqui", "Color marino", "Gris claro", "Negro", "Gris oscuro"],
+        tallas: ["M", "L", "XL", "XXL", "XXXL"],
+        calificacion: 4.7,
+        resenas: 1715,
+        ventas: "88,9K+",
+        entrega: "10 días hábiles",
+        envioGratis: true,
+        url: "https://www.temu.com/ec/chaqueta-con-capucha-de-moda-para-hombre--invierno-estilo--y-americano-sudadera-casual-con-cremallera-para-exteriores--y-calido-ideal-para--g-601099663561476.html?refer_page_name=goods&refer_page_id=10032_1793059784847_xsixmishee&refer_page_sn=10032&_x_sessn_id=gwpkjdhybz",
+    },
+    {
+        id: 2,
+        producto: "Smartwatch para hombres y mujeres (llamadas inalámbricas, SMS, modos deportivos)",
+        tipo: "tecnologia",
+        categoria: "Smartwatch y accesorios",
+        precio: 6.3,
+        precioAnterior: 22.84,
+        descuento: "72%",
+        moneda: "USD",
+        colores: ["Negro", "Dorado", "Plateado", "Rosa"],
+        calificacion: 4.7,
+        resenas: 2915,
+        ventas: "79,8K+",
+        vendedor: "ERUN",
+        entrega: "11 días hábiles",
+        envioGratis: true,
+        url: "https://www.temu.com/ec/-smartwatch---para-hombres-como-para-mujeres-regalo-de-san-valentin--inalambricas-sms-multiples--deportivos-control-remoto-de-camara-rastreador-de-actividad-fisica-compatible-con-iphone-y--carga-usb-correa-de-silicona--inteligente-g-606135394363392.html",
+    },
+    {
+        id: 3,
+        producto: "Conjunto cuaderno de cuero vintage estilo pirata + 2 bolígrafos de gel",
+        tipo: "oficina",
+        categoria: "Oficina y escuela",
+        precio: 4.01,
+        precioAnterior: 12.82,
+        descuento: "68%",
+        moneda: "USD",
+        colores: ["Marrón", "Negro", "Azul", "Verde", "Rojo marrón", "Rojo"],
+        incluye: ["Cuaderno pirata vintage", "2 bolígrafos de gel negros y dorados"],
+        calificacion: 4.8,
+        resenas: 4564,
+        ventas: "82,8K+",
+        entrega: "10 días hábiles",
+        envioGratis: true,
+        url: "https://www.temu.com/ec/-conjunto--tres-articulos-un-cuaderno-de-cuero--acabado-mate-y--boligrafos-de-gel-negros-y-dorados-con-un--de---de-tema-pirata-retro--de---esta-equipado-con-un-cierre-metalico-y-encuadernacion--lo-que-lo-convierte-en-un--de-escritura-divertido-y--g-601101315823890.html",
+    },
+    {
+        id: 4,
+        producto: "Mochila unisex de gran capacidad, estilo minimalista",
+        tipo: "bolsos",
+        categoria: "Mochilas para estudiantes",
+        precio: 14.23,
+        precioAnterior: 48.84,
+        descuento: "70%",
+        moneda: "USD",
+        colores: ["Gris"],
+        coloresAgotados: ["Negro"],
+        calificacion: 4.8,
+        resenas: 131,
+        ventas: "4,4K+",
+        entrega: "10 días hábiles",
+        envioGratis: true,
+        url: "https://www.temu.com/ec/mochila-unisex-de-gran-capacidad-de-estilo-minimalista-a---de-material--calidad--y-resistente-a-los-aranazos--un-estilo--y--de-bolso-de--casual-con-multiples-bolsillos-y-compartimentos-adecuada-para-desplazamientos-diarios-y-viajes-para-g-601100046820079.html",
+    },
 ];
 
 // ------------------------------------------------------------
@@ -105,11 +105,11 @@ app.use(express.json());
 // para cada una.
 
 app.get("/", (req, res) => {
-  res.send("Bienvenido a la tienda en línea. ¡Mira el catálogo en /tienda!");
+    res.send("Bienvenido a la tienda en línea. ¡Mira el catálogo en /tienda!");
 });
 
 app.get("/ofertas", (req, res) => {
-  res.send("Ofertas del día: hasta 72% de descuento en productos seleccionados");
+    res.send("Ofertas del día: hasta 72% de descuento en productos seleccionados");
 });
 
 // ------------------------------------------------------------
@@ -119,7 +119,7 @@ app.get("/ofertas", (req, res) => {
 // res.send(): devuelve texto simple.
 // Aplicación práctica: el aviso de envío que aparece en la tienda.
 app.get("/aviso-envio", (req, res) => {
-  res.send("Envío gratis en todos los productos. Entrega en 10 a 11 días hábiles");
+    res.send("Envío gratis en todos los productos. Entrega en 10 a 11 días hábiles");
 });
 
 // res.json(): devuelve datos estructurados, ideal para que otra
@@ -128,7 +128,7 @@ app.get("/aviso-envio", (req, res) => {
 // capucha y recibe su precio, colores, tallas y calificación en JSON.
 // Los datos están en el arreglo "productos" del inicio del archivo.
 app.get("/chaqueta-temu", (req, res) => {
-  res.json(productos[0]);
+    res.json(productos[0]);
 });
 
 
@@ -141,7 +141,7 @@ app.get("/chaqueta-temu", (req, res) => {
 
 //Existen 3 maneras de enviar datos: body, params y query.
 
-//BODY 
+//BODY
 
 // Aplicación práctica: el cliente agrega un producto al carrito. Elige
 // producto, color, talla (solo para ropa) y cantidad. Los datos viajan
@@ -150,40 +150,40 @@ app.get("/chaqueta-temu", (req, res) => {
 // Prueba (JSON): { "productoId": 1, "color": "Negro", "talla": "L", "cantidad": 2 }
 
 app.post("/carrito", (req, res) => {
-  console.log(req.body);
-  const { productoId, color, talla, cantidad } = req.body ?? {};
-  const producto = productos.find((p) => p.id === Number(productoId));
+    console.log(req.body);
+    const { productoId, color, talla, cantidad } = req.body ?? {};
+    const producto = productos.find((p) => p.id === Number(productoId));
 
-  if (!producto) {
-    return res.status(404).json({ error: "Producto no encontrado" });
-  }
-  if (!producto.colores.includes(color)) {
-    return res.status(400).json({
-      error: `Color no disponible. Opciones: ${producto.colores.join(", ")}`,
-    });
-  }
-  if (producto.tallas && !producto.tallas.includes(talla)) {
-    return res.status(400).json({
-      error: `Talla inválida. Opciones: ${producto.tallas.join(", ")}`,
-    });
-  }
-  const unidades = Number(cantidad);
-  if (!Number.isInteger(unidades) || unidades < 1) {
-    return res.status(400).json({ error: "La cantidad debe ser un entero mayor a 0" });
-  }
+    if (!producto) {
+        return res.status(404).json({ error: "Producto no encontrado" });
+    }
+    if (!producto.colores.includes(color)) {
+        return res.status(400).json({
+            error: `Color no disponible. Opciones: ${producto.colores.join(", ")}`,
+        });
+    }
+    if (producto.tallas && !producto.tallas.includes(talla)) {
+        return res.status(400).json({
+            error: `Talla inválida. Opciones: ${producto.tallas.join(", ")}`,
+        });
+    }
+    const unidades = Number(cantidad);
+    if (!Number.isInteger(unidades) || unidades < 1) {
+        return res.status(400).json({ error: "La cantidad debe ser un entero mayor a 0" });
+    }
 
-  res.json({
-    mensaje: "Producto agregado al carrito",
-    producto: producto.producto,
-    color,
-    talla: talla ?? "no aplica",
-    cantidad: unidades,
-    total: Number((producto.precio * unidades).toFixed(2)),
-    moneda: producto.moneda,
-  });
+    res.json({
+        mensaje: "Producto agregado al carrito",
+        producto: producto.producto,
+        color,
+        talla: talla ?? "no aplica",
+        cantidad: unidades,
+        total: Number((producto.precio * unidades).toFixed(2)),
+        moneda: producto.moneda,
+    });
 });
 
-//PARAMS 
+//PARAMS
 
 // (parámetros de ruta: /ruta/:valor)
 
@@ -191,15 +191,15 @@ app.post("/carrito", (req, res) => {
 // Al hacer clic en la tarjeta de un producto, la tienda abre su
 // detalle con /producto/2. El id forma parte de la dirección.
 app.get("/producto/:id", (req, res) => {
-  console.log(req.params);
-  const producto = productos.find((p) => p.id === Number(req.params.id));
-  if (!producto) {
-    return res.status(404).json({ error: "Producto no encontrado" });
-  }
-  res.json(producto);
+    console.log(req.params);
+    const producto = productos.find((p) => p.id === Number(req.params.id));
+    if (!producto) {
+        return res.status(404).json({ error: "Producto no encontrado" });
+    }
+    res.json(producto);
 });
 
-//QUERY 
+//QUERY
 
 // (parámetros de consulta: ?clave=valor)
 
@@ -207,10 +207,85 @@ app.get("/producto/:id", (req, res) => {
 // el filtro "tecnologia" y la URL queda /buscar?tipo=tecnologia.
 // Si no envía filtro, se devuelve todo el catálogo.
 app.get("/buscar", (req, res) => {
-  console.log(req.query);
-  const { tipo } = req.query;
-  const resultados = tipo
-    ? productos.filter((p) => p.tipo === String(tipo).toLowerCase())
-    : productos;
-  res.json({ total: resultados.length, resultados });
+    console.log(req.query);
+    const { tipo } = req.query;
+    const resultados = tipo
+        ? productos.filter((p) => p.tipo === String(tipo).toLowerCase())
+        : productos;
+    res.json({ total: resultados.length, resultados });
 });
+
+// ------------------------------------------------------------
+// RESPONSE (continuación): sendFile y HTML
+// ------------------------------------------------------------
+
+// res.sendFile(): envía un archivo almacenado en el servidor.
+// Aplicación práctica: la tienda muestra la foto del producto. La
+// imagen está en la carpeta /public y path.join arma su ruta absoluta.
+// Si el archivo no existe, se avisa en vez de dejar caer el servidor.
+app.get("/chaqueta-imagen", (req, res) => {
+    const ruta = path.join(import.meta.dirname, "public", "chaqueta.jpg");
+    res.sendFile(ruta, (err) => {
+        if (err && !res.headersSent) {
+            res.status(404).send("Imagen no encontrada");
+        }
+    });
+});
+
+// res.send() con HTML: el servidor puede devolver una página.
+// Aplicación práctica: la vitrina de la tienda, donde el cliente ve
+// el nombre y el precio de cada producto antes de elegir.
+app.get("/tienda", (req, res) => {
+    const items = productos
+        .map((p) => `<li>#${p.id} - ${p.producto} - USD ${p.precio.toFixed(2)}</li>`)
+        .join("");
+    res.send(`<h1>Catálogo de la tienda</h1><ul>${items}</ul>`);
+});
+
+// ------------------------------------------------------------
+// MIDDLEWARE: función que se ejecuta ENTRE la petición y la
+// respuesta. El orden en que se escriben es MUY importante.
+// ------------------------------------------------------------
+
+// Ruta LIBRE (se declara antes del guardia, así que nadie la bloquea)
+// Aplicación práctica: las novedades de la tienda las puede ver
+// cualquier visitante, sin necesidad de iniciar sesión.
+app.get("/novedades", (req, res) => {
+    res.send("Novedades: nuevos modelos de smartwatch y mochilas ya disponibles");
+});
+
+// Middleware de AUTENTICACIÓN (el guardia de seguridad)
+// Aplicación práctica: antes de mostrar las ofertas exclusivas, el
+// guardia revisa que el cliente tenga su código de miembro (token).
+// Si lo tiene, next() lo deja pasar; si no, se le niega el acceso.
+// Prueba: enviar el header  token: cliente2026
+app.use((req, res, next) => {
+    const { token } = req.headers;
+    if (token === "cliente2026") {
+        next();
+    } else {
+        res.status(401).send("Acceso denegado: se requiere el código de miembro (token)");
+    }
+});
+
+// Ruta PROTEGIDA (solo se llega aquí si el guardia dio permiso)
+app.get("/ofertas-vip", (req, res) => {
+    res.send("Ofertas exclusivas para miembros: 10% extra en toda la tienda");
+});
+
+// Middleware 404 (ruta no encontrada)
+// Aplicación práctica: si el cliente busca una sección que no existe,
+// se le avisa. Va SIEMPRE AL FINAL, porque si se pone antes tapa a
+// todas las rutas que se declaran después.
+app.use((req, res) => {
+    res.status(404).send("Sección no encontrada");
+});
+
+// ------------------------------------------------------------
+// Puerto: la "puerta" por la que el servidor escucha peticiones
+// ------------------------------------------------------------
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor de la tienda funcionando en el puerto ${PORT}`);
+});
+
